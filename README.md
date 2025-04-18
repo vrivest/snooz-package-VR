@@ -20,7 +20,7 @@ Welcome to the snooz-package-template repository. The purpose of this repository
 ## Installation
 ### Add this repository to your Snooz workspace
 
-The first step is to add this repository to your Snooz's workspace. This will allow you to debug your new modules and tools. :-0
+The first step is to add this repository to your Snooz's workspace. This will allow you to debug your new modules and tools. 
 
 - Open Snooz's workspace in Visual Studio Code.
 - Go to **File->Add Folder to Workspace...**
