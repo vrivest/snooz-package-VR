@@ -1,10 +1,11 @@
-"""
+""""
 @ Valorisation Recherche HSCM, Societe en Commandite – 2025
 See the file LICENCE for full license details.
 
     SubtractSignals
     TODO CLASS DESCRIPTION
 """
+import numpy as np
 from flowpipe import SciNode, InputPlug, OutputPlug
 from commons.NodeInputException import NodeInputException
 from commons.NodeRuntimeException import NodeRuntimeException
@@ -53,75 +54,39 @@ class SubtractSignals(SciNode):
         # There can only be 1 master module per process.
         self._is_master = False 
     
-    def compute(self, main_signal,signal_to_subtract):
-        """
-        TODO DESCRIPTION
+    def compute(self, main_signal,signal_to_substract):
+        # Make appropriate checks to input values
+        if not isinstance(main_signal, dict):
+                raise NodeInputException(self.identifier, "main_signal", "main_signal must be a dictionary")
+        if not isinstance(signal_to_substract, dict):
+                raise NodeInputException(self.identifier, "signal_to_substract", "signal_to_substract must be a dictionary")
 
-        Parameters
-        ----------
-            main_signal: TODO TYPE
-                TODO DESCRIPTION
-            signal_to_subtract: TODO TYPE
-                TODO DESCRIPTION
-            
+        if 'samples' not in main_signal or 'samples' not in signal_to_substract:
+                raise NodeInputException(self.identifier, "samples", "main_signal and signal_to_substract must contain 'samples' key")
 
-        Returns
-        -------
-            signal: TODO TYPE
-                TODO DESCRIPTION
-            
+        if 'sample_rate' not in main_signal or 'sample_rate' not in signal_to_substract:
+                raise NodeInputException(self.identifier, "sample_rate", "main_signal and signal_to_substract must contain 'sample_rate' key")
 
-        Raises
-        ------
-            NodeInputException
-                If any of the input parameters have invalid types or missing keys.
-            NodeRuntimeException
-                If an error occurs during the execution of the function.
-        """
+        if main_signal['sample_rate'] != signal_to_substract['sample_rate']:
+                raise NodeInputException(self.identifier, "sample_rate", "Sample rates of both signals must be the same.")
 
-        # Code examples
+        # Determine the lengths of the signal samples
+        len_main_signal = len(main_signal['samples'])
+        len_signal_to_substract = len(signal_to_substract['samples'])
 
-        # Raise NodeInputException if the an input is wrong. This type of
-        # exception will stop the process with the error message given in parameter.
-        # raise NodeInputException(self.identifier, "my_input", \
-        #        f"SubtractSignals this input is wrong.")
+        # Extend the shorter signal with zeros
+        if len_main_signal < len_signal_to_substract:
+                main_signal['samples'] = np.pad(main_signal['samples'], (0, len_signal_to_substract - len_main_signal), 'constant')
+        elif len_signal_to_substract < len_main_signal:
+                signal_to_substract['samples'] = np.pad(signal_to_substract['samples'], (0, len_main_signal - len_signal_to_substract), 'constant')
 
-        # Raise NodeRuntimeException if there is a critical error during runtime. 
-        # This will usually be a user error, a file that can't be read due to security reason,
-        # a parameter that is out of bound, etc. This exception will stop and skip the current
-        # process but will not stop the followin iterations if a master node is not done.
-        # Once the master node is completed, a dialog will appear to show all NodeRuntimeException
-        # to the user.
-        #
-        # Set the iteration_identifier if this module is a master node.
-        # This will be used to identify the problematic iteration if a runtime exception occurs
-        # in any module during this process. For example, a master node that reads one file at a 
-        # could set the identifier to the name of the file.
-        # self.iteration_identifier = current_filename
-        #
-        # Iteration count and counter are used to show a progress bar in percent.
-        # Update these when creating a master node to properly show the progress 
-        # for each iteration. This is optional and can be ignored but it's a good practice
-        # to do for your users.
-        #self.iteration_count = the total amout of iteration to make
-        #self.iteration_counter = the current iteration number
+        # Perform the addition of the signals
+        result_samples = main_signal['samples'] - signal_to_substract['samples']
 
-        #
-        # Raise the runtime exception
-        # raise NodeRuntimeException(self.identifier, "files", \
-        #        f"Some file could not be open.")
-
-        #
-        #
-
-        # Write to the cache to use the data in the resultTab
-        # cache = {}
-        # cache['this_is_a_key'] = 42
-        # self._cache_manager.write_mem_cache(self.identifier, cache)
-
-        # Log message for the Logs tab
-        self._log_manager.log(self.identifier, "This module does nothing.")
-
-        return {
-            'signal': None
+        # Create the output signal dictionary
+        output_signal = {
+                'samples': result_samples,
+                "sample_rate":main_signal['sample_rate']
         }
+
+        return {'signal': output_signal}
