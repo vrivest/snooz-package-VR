@@ -54,34 +54,34 @@ class SubtractSignals(SciNode):
         # There can only be 1 master module per process.
         self._is_master = False 
     
-    def compute(self, main_signal,signal_to_substract):
+    def compute(self, main_signal,signal_to_subtract):
         # Make appropriate checks to input values
         if not isinstance(main_signal, dict):
                 raise NodeInputException(self.identifier, "main_signal", "main_signal must be a dictionary")
-        if not isinstance(signal_to_substract, dict):
-                raise NodeInputException(self.identifier, "signal_to_substract", "signal_to_substract must be a dictionary")
+        if not isinstance(signal_to_subtract, dict):
+                raise NodeInputException(self.identifier, "signal_to_subtract", "signal_to_subtract must be a dictionary")
 
-        if 'samples' not in main_signal or 'samples' not in signal_to_substract:
-                raise NodeInputException(self.identifier, "samples", "main_signal and signal_to_substract must contain 'samples' key")
+        if 'samples' not in main_signal or 'samples' not in signal_to_subtract:
+                raise NodeInputException(self.identifier, "samples", "main_signal and signal_to_subtract must contain 'samples' key")
 
-        if 'sample_rate' not in main_signal or 'sample_rate' not in signal_to_substract:
-                raise NodeInputException(self.identifier, "sample_rate", "main_signal and signal_to_substract must contain 'sample_rate' key")
+        if 'sample_rate' not in main_signal or 'sample_rate' not in signal_to_subtract:
+                raise NodeInputException(self.identifier, "sample_rate", "main_signal and signal_to_subtract must contain 'sample_rate' key")
 
-        if main_signal['sample_rate'] != signal_to_substract['sample_rate']:
+        if main_signal['sample_rate'] != signal_to_subtract['sample_rate']:
                 raise NodeInputException(self.identifier, "sample_rate", "Sample rates of both signals must be the same.")
 
         # Determine the lengths of the signal samples
         len_main_signal = len(main_signal['samples'])
-        len_signal_to_substract = len(signal_to_substract['samples'])
+        len_signal_to_subtract = len(signal_to_subtract['samples'])
 
         # Extend the shorter signal with zeros
-        if len_main_signal < len_signal_to_substract:
-                main_signal['samples'] = np.pad(main_signal['samples'], (0, len_signal_to_substract - len_main_signal), 'constant')
-        elif len_signal_to_substract < len_main_signal:
-                signal_to_substract['samples'] = np.pad(signal_to_substract['samples'], (0, len_main_signal - len_signal_to_substract), 'constant')
+        if len_main_signal < len_signal_to_subtract:
+                main_signal['samples'] = np.pad(main_signal['samples'], (0, len_signal_to_subtract - len_main_signal), 'constant')
+        elif len_signal_to_subtract < len_main_signal:
+                signal_to_subtract['samples'] = np.pad(signal_to_subtract['samples'], (0, len_main_signal - len_signal_to_subtract), 'constant')
 
         # Perform the addition of the signals
-        result_samples = main_signal['samples'] - signal_to_substract['samples']
+        result_samples = main_signal['samples'] - signal_to_subtract['samples']
 
         # Create the output signal dictionary
         output_signal = {
