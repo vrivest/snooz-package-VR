@@ -9,7 +9,23 @@
         "tool_url": "",
         "tool_description": "Tool for generating a signal image.",
         "package_name": "ExampleToolsPackage",
-        "steps": []
+        "steps": [
+            {
+                "name": "First Signal",
+                "description": "Parameters of the first signal.",
+                "module_id": "92b8632c-3835-4554-83f4-2f5548e8873a"
+            },
+            {
+                "name": "Second Signal",
+                "description": " Parameters of the second signal",
+                "module_id": "d23205b0-649d-48cd-b2d9-99fe3828e696"
+            },
+            {
+                "name": "Output file",
+                "description": "Parameters of the output file",
+                "module_id": "9d11b79d-f551-4db9-8421-cdb4563f2e96"
+            }
+        ]
     },
     "dependencies": [
         {
