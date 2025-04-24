@@ -26,6 +26,151 @@
         "process_label": "",
         "nodes": [
             {
+                "cls": "PrintSignal",
+                "name": "PrintSignal",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Print Signal",
+                "module_category": "Examples",
+                "module_options": {},
+                "inputs": {
+                    "signal": {
+                        "name": "signal",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "0ebf6cc0-58b6-4d8f-a620-12f3629cd967": "signal"
+                        }
+                    },
+                    "filename": {
+                        "name": "filename",
+                        "value": "C:\\Users\\vrive\\Documents\\Stage - G\u00e9nie \u00c9lectrique JM_LINA\\test_subtract_signal.png",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {},
+                "module": "ExampleModulesPackage.PrintSignal",
+                "identifier": "9d11b79d-f551-4db9-8421-cdb4563f2e96",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "ExampleModulesPackage"
+                },
+                "pos_x": 160.0,
+                "pos_y": -268.0
+            },
+            {
+                "cls": "SubtractSignals",
+                "name": "SubtractSignals",
+                "metadata": {},
+                "file_location": null,
+                "module": "ExampleModulesPackage.SubtractSignals",
+                "module_label": "Subtract Signals",
+                "module_category": "Examples",
+                "module_author": "",
+                "module_url": "",
+                "module_description": "",
+                "module_options": {},
+                "inputs": {
+                    "main_signal": {
+                        "name": "main_signal",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "d23205b0-649d-48cd-b2d9-99fe3828e696": "signal"
+                        }
+                    },
+                    "signal_to_subtract": {
+                        "name": "signal_to_subtract",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "92b8632c-3835-4554-83f4-2f5548e8873a": "signal"
+                        }
+                    }
+                },
+                "outputs": {
+                    "signal": {
+                        "name": "signal",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "9d11b79d-f551-4db9-8421-cdb4563f2e96": [
+                                "signal"
+                            ]
+                        }
+                    }
+                },
+                "identifier": "0ebf6cc0-58b6-4d8f-a620-12f3629cd967",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "ExampleModulesPackage"
+                },
+                "pos_x": -97.0,
+                "pos_y": -66.0
+            },
+            {
+                "cls": "SignalGenerator",
+                "name": "SignalGenerator",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Signal Generator",
+                "module_category": "Examples",
+                "module_options": {},
+                "inputs": {
+                    "duration": {
+                        "name": "duration",
+                        "value": "1",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "sample_rate": {
+                        "name": "sample_rate",
+                        "value": "250",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "frequency": {
+                        "name": "frequency",
+                        "value": "70",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "amplitude": {
+                        "name": "amplitude",
+                        "value": "2",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "phase": {
+                        "name": "phase",
+                        "value": "0",
+                        "sub_plugs": {},
+                        "connections": {}
+                    }
+                },
+                "outputs": {
+                    "signal": {
+                        "name": "signal",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "0ebf6cc0-58b6-4d8f-a620-12f3629cd967": [
+                                "signal_to_subtract"
+                            ]
+                        }
+                    }
+                },
+                "module": "ExampleModulesPackage.SignalGenerator",
+                "identifier": "92b8632c-3835-4554-83f4-2f5548e8873a",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "ExampleModulesPackage"
+                },
+                "pos_x": -445.0,
+                "pos_y": 30.0
+            },
+            {
                 "cls": "SignalGenerator",
                 "name": "SignalGenerator",
                 "metadata": {},
@@ -83,153 +228,8 @@
                 "package": {
                     "package_name": "ExampleModulesPackage"
                 },
-                "pos_x": -272.0,
-                "pos_y": -172.0
-            },
-            {
-                "cls": "SignalGenerator",
-                "name": "SignalGenerator",
-                "metadata": {},
-                "file_location": "",
-                "module_label": "Signal Generator",
-                "module_category": "Examples",
-                "module_options": {},
-                "inputs": {
-                    "duration": {
-                        "name": "duration",
-                        "value": "1",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "sample_rate": {
-                        "name": "sample_rate",
-                        "value": "250",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "frequency": {
-                        "name": "frequency",
-                        "value": "4",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "amplitude": {
-                        "name": "amplitude",
-                        "value": "5",
-                        "sub_plugs": {},
-                        "connections": {}
-                    },
-                    "phase": {
-                        "name": "phase",
-                        "value": "0",
-                        "sub_plugs": {},
-                        "connections": {}
-                    }
-                },
-                "outputs": {
-                    "signal": {
-                        "name": "signal",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "0ebf6cc0-58b6-4d8f-a620-12f3629cd967": [
-                                "signal_to_subtract"
-                            ]
-                        }
-                    }
-                },
-                "module": "ExampleModulesPackage.SignalGenerator",
-                "identifier": "92b8632c-3835-4554-83f4-2f5548e8873a",
-                "activation_state": "activated",
-                "package": {
-                    "package_name": "ExampleModulesPackage"
-                },
-                "pos_x": -270.0,
-                "pos_y": 31.0
-            },
-            {
-                "cls": "SubtractSignals",
-                "name": "SubtractSignals",
-                "metadata": {},
-                "file_location": null,
-                "module": "ExampleModulesPackage.SubtractSignals",
-                "module_label": "Subtract Signals",
-                "module_category": "Examples",
-                "module_author": "",
-                "module_url": "",
-                "module_description": "",
-                "module_options": {},
-                "inputs": {
-                    "main_signal": {
-                        "name": "main_signal",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "d23205b0-649d-48cd-b2d9-99fe3828e696": "signal"
-                        }
-                    },
-                    "signal_to_subtract": {
-                        "name": "signal_to_subtract",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "92b8632c-3835-4554-83f4-2f5548e8873a": "signal"
-                        }
-                    }
-                },
-                "outputs": {
-                    "signal": {
-                        "name": "signal",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "9d11b79d-f551-4db9-8421-cdb4563f2e96": [
-                                "signal"
-                            ]
-                        }
-                    }
-                },
-                "identifier": "0ebf6cc0-58b6-4d8f-a620-12f3629cd967",
-                "activation_state": "activated",
-                "package": {
-                    "package_name": "ExampleModulesPackage"
-                },
-                "pos_x": -97.0,
-                "pos_y": -66.0
-            },
-            {
-                "cls": "PrintSignal",
-                "name": "PrintSignal",
-                "metadata": {},
-                "file_location": "",
-                "module_label": "Print Signal",
-                "module_category": "Examples",
-                "module_options": {},
-                "inputs": {
-                    "signal": {
-                        "name": "signal",
-                        "value": "",
-                        "sub_plugs": {},
-                        "connections": {
-                            "0ebf6cc0-58b6-4d8f-a620-12f3629cd967": "signal"
-                        }
-                    },
-                    "filename": {
-                        "name": "filename",
-                        "value": "C:\\Users\\vrive\\Documents\\Stage - G\u00e9nie \u00c9lectrique JM_LINA\\test_subtract_signal.png",
-                        "sub_plugs": {},
-                        "connections": {}
-                    }
-                },
-                "outputs": {},
-                "module": "ExampleModulesPackage.PrintSignal",
-                "identifier": "9d11b79d-f551-4db9-8421-cdb4563f2e96",
-                "activation_state": "activated",
-                "package": {
-                    "package_name": "ExampleModulesPackage"
-                },
-                "pos_x": 73.0,
-                "pos_y": -288.0
+                "pos_x": -387.0,
+                "pos_y": -188.0
             }
         ]
     }
