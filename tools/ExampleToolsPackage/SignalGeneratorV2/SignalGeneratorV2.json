@@ -22,7 +22,7 @@
                 "name": "First Signal",
                 "description": "Parameters of the first signal.",
                 "module_id": "92b8632c-3835-4554-83f4-2f5548e8873a"
-            },
+            }, 
             {
                 "name": "Second Signal",
                 "description": " Parameters of the second signal",
