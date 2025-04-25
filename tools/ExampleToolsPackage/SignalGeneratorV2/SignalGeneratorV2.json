@@ -10,6 +10,14 @@
         "tool_description": "Tool for generating a signal image.",
         "package_name": "ExampleToolsPackage",
         "steps": [
+
+            {
+                "name": "Signal Generator V2 SUB",
+                "description": "Introduction",
+                "custom_step_name": "IntroStep",
+                "show_index": true
+            },
+
             {
                 "name": "First Signal",
                 "description": "Parameters of the first signal.",
@@ -24,13 +32,8 @@
                 "name": "Output file",
                 "description": "Parameters of the output file",
                 "module_id": "9d11b79d-f551-4db9-8421-cdb4563f2e96"
-            },
-            {
-                "name": "Signal Generator V2 SUB",
-                "description": "Introduction",
-                "custom_step_name": "IntroStep",
-                "show_index": true
             }
+
         ]
     },
     "dependencies": [
