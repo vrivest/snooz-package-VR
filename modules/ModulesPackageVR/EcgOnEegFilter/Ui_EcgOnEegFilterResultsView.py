@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Ui_ECGArtifactsCorrectionResultsView.ui'
+## Form generated from reading UI file 'Ui_EcgOnEegFilterResultsView.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.8.2
 ##
@@ -18,13 +18,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QSizePolicy, QVBoxLayout, QWidget)
 import themes_rc
 
-class Ui_ECGArtifactsCorrectionResultsView(object):
-    def setupUi(self, ECGArtifactsCorrectionResultsView):
-        if not ECGArtifactsCorrectionResultsView.objectName():
-            ECGArtifactsCorrectionResultsView.setObjectName(u"ECGArtifactsCorrectionResultsView")
-        ECGArtifactsCorrectionResultsView.setStyleSheet(u"font: 12pt \"Roboto\";")
-        ECGArtifactsCorrectionResultsView.resize(483, 360)
-        self.verticalLayout = QVBoxLayout(ECGArtifactsCorrectionResultsView)
+class Ui_EcgOnEegFilterResultsView(object):
+    def setupUi(self, EcgOnEegFilterResultsView):
+        if not EcgOnEegFilterResultsView.objectName():
+            EcgOnEegFilterResultsView.setObjectName(u"EcgOnEegFilterResultsView")
+        EcgOnEegFilterResultsView.setStyleSheet(u"font: 12pt \"Roboto\";")
+        EcgOnEegFilterResultsView.resize(483, 360)
+        self.verticalLayout = QVBoxLayout(EcgOnEegFilterResultsView)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.result_layout = QVBoxLayout()
         self.result_layout.setObjectName(u"result_layout")
@@ -32,12 +32,12 @@ class Ui_ECGArtifactsCorrectionResultsView(object):
         self.verticalLayout.addLayout(self.result_layout)
 
 
-        self.retranslateUi(ECGArtifactsCorrectionResultsView)
+        self.retranslateUi(EcgOnEegFilterResultsView)
 
-        QMetaObject.connectSlotsByName(ECGArtifactsCorrectionResultsView)
+        QMetaObject.connectSlotsByName(EcgOnEegFilterResultsView)
     # setupUi
 
-    def retranslateUi(self, ECGArtifactsCorrectionResultsView):
-        ECGArtifactsCorrectionResultsView.setWindowTitle(QCoreApplication.translate("ECGArtifactsCorrectionResultsView", u"Form", None))
+    def retranslateUi(self, EcgOnEegFilterResultsView):
+        EcgOnEegFilterResultsView.setWindowTitle(QCoreApplication.translate("EcgOnEegFilterResultsView", u"Form", None))
     # retranslateUi
 

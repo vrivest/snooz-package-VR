@@ -2,19 +2,19 @@
 @ Valorisation Recherche HSCM, Societe en Commandite – 2025
 See the file LICENCE for full license details.
 
-    Results viewer of the ECGArtifactsCorrection plugin
+    Results viewer of the EcgOnEegFilter plugin
 """
 
 from qtpy import QtWidgets
 
-from ModulesPackageVR.ECGArtifactsCorrection.Ui_ECGArtifactsCorrectionResultsView import Ui_ECGArtifactsCorrectionResultsView
+from ModulesPackageVR.EcgOnEegFilter.Ui_EcgOnEegFilterResultsView import Ui_EcgOnEegFilterResultsView
 
-class ECGArtifactsCorrectionResultsView(Ui_ECGArtifactsCorrectionResultsView, QtWidgets.QWidget):
+class EcgOnEegFilterResultsView(Ui_EcgOnEegFilterResultsView, QtWidgets.QWidget):
     """
-        ECGArtifactsCorrectionResultsView.
+        EcgOnEegFilterResultsView.
     """
     def __init__(self, parent_node, cache_manager, pub_sub_manager, *args, **kwargs):
-        super(ECGArtifactsCorrectionResultsView, self).__init__(*args, **kwargs)
+        super(EcgOnEegFilterResultsView, self).__init__(*args, **kwargs)
         self._parent_node = parent_node
         self._pub_sub_manager = pub_sub_manager
         self._cache_manager = cache_manager

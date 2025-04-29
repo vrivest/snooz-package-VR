@@ -1,0 +1,26 @@
+{
+    "item_name": "EcgArtifactsCorrectionOnEeg",
+    "item_type": "tool",
+    "item_api_version": "1.0.0",
+    "tool_params": {
+        "tool_label": "ECG Artifacts Correction on EEG",
+        "tool_category": "Artifacts",
+        "tool_author": "Vincent Rivest",
+        "tool_url": "",
+        "tool_description": "Corrige les artefacts ECG sur les EEG",
+        "package_name": "ToolsPackageVR",
+        "steps": []
+    },
+    "dependencies": [
+        {
+            "package_name": "ToolsPackageVR",
+            "package_version": "0.0.0",
+            "deleteable": false
+        }
+    ],
+    "process_params": {
+        "process_label": "ECG Artifacts Correction on EEG",
+        "subgraph_params": {},
+        "nodes": []
+    }
+}

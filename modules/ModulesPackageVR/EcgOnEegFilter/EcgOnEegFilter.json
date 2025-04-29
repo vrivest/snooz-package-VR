@@ -1,17 +1,17 @@
 {   
-    "item_name": "ECGArtifactsCorrection",
+    "item_name": "EcgOnEegFilter",
     "item_type": "module",
     "item_api_version": "1.0.0",
     "dependencies": [
     ],
     "module_params":{
-        "cls":"ECGArtifactsCorrection",
-        "name":"ECGArtifactsCorrection",
+        "cls":"EcgOnEegFilter",
+        "name":"EcgOnEegFilter",
         "metadata":{},
         "file_location":null,
-        "module":"ModulesPackageVR.ECGArtifactsCorrection",
-        "module_label": "ECG Artifacts Correction",
-        "module_category":"Artifacts",
+        "module":"ModulesPackageVR.EcgOnEegFilter",
+        "module_label": "Ecg on Eeg Filter",
+        "module_category":"Filter",
         "module_author":"",
         "module_url":"",
         "module_description":"",
@@ -27,12 +27,15 @@
                 "value": "",
                 "connections": {},
                 "sub_plugs": {}
-            },"filename": {
+            },
+            "filename": {
                 "name": "filename",
                 "value": "",
                 "connections": {},
                 "sub_plugs": {}
             }
+
+
         },
         "outputs": {
             "corrected_signal": {

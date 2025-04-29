@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ECGArtifactsCorrectionSettingsView</class>
- <widget class="QWidget" name="ECGArtifactsCorrectionSettingsView">
+ <class>EcgOnEegFilterSettingsView</class>
+ <widget class="QWidget" name="EcgOnEegFilterSettingsView">
   <property name="styleSheet">
    <string notr="true">font: 12pt &quot;Roboto&quot;;</string>
   </property>
@@ -41,19 +41,6 @@
      </item>
      <item>
       <widget class="QLineEdit" name="ecg_signal_lineedit"/>
-     </item>
-    </layout>
-   </item><item>
-    <layout class="QHBoxLayout" name="filename_horizontalLayout">
-     <item>
-      <widget class="QLabel" name="filename_label">
-       <property name="text">
-        <string>filename</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="filename_lineedit"/>
      </item>
     </layout>
    </item>

@@ -2,7 +2,7 @@
 @ Valorisation Recherche HSCM, Societe en Commandite – 2025
 See the file LICENCE for full license details.
 
-    ECGArtifactsCorrection
+    EcgOnEegFilter
     TODO CLASS DESCRIPTION
 """
 from flowpipe import SciNode, InputPlug, OutputPlug
@@ -11,7 +11,7 @@ from commons.NodeRuntimeException import NodeRuntimeException
 
 DEBUG = False
 
-class ECGArtifactsCorrection(SciNode):
+class EcgOnEegFilter(SciNode):
     """
     TODO CLASS DESCRIPTION
 
@@ -20,8 +20,6 @@ class ECGArtifactsCorrection(SciNode):
         eeg_signals: TODO TYPE
             TODO DESCRIPTION
         ecg_signal: TODO TYPE
-            TODO DESCRIPTION
-        filename: TODO TYPE
             TODO DESCRIPTION
         
 
@@ -32,14 +30,13 @@ class ECGArtifactsCorrection(SciNode):
         
     """
     def __init__(self, **kwargs):
-        """ Initialize module ECGArtifactsCorrection """
+        """ Initialize module EcgOnEegFilter """
         super().__init__(**kwargs)
-        if DEBUG: print('ECGArtifactsCorrection.__init__')
+        if DEBUG: print('EcgOnEegFilter.__init__')
 
         # Input plugs
         InputPlug('eeg_signals',self)
         InputPlug('ecg_signal',self)
-        InputPlug('filename',self)
         
 
         # Output plugs
@@ -56,7 +53,7 @@ class ECGArtifactsCorrection(SciNode):
         # There can only be 1 master module per process.
         self._is_master = False 
     
-    def compute(self, eeg_signals,ecg_signal,filename):
+    def compute(self, eeg_signals,ecg_signal):
         """
         TODO DESCRIPTION
 
@@ -65,8 +62,6 @@ class ECGArtifactsCorrection(SciNode):
             eeg_signals: TODO TYPE
                 TODO DESCRIPTION
             ecg_signal: TODO TYPE
-                TODO DESCRIPTION
-            filename: TODO TYPE
                 TODO DESCRIPTION
             
 
@@ -89,7 +84,7 @@ class ECGArtifactsCorrection(SciNode):
         # Raise NodeInputException if the an input is wrong. This type of
         # exception will stop the process with the error message given in parameter.
         # raise NodeInputException(self.identifier, "my_input", \
-        #        f"ECGArtifactsCorrection this input is wrong.")
+        #        f"EcgOnEegFilter this input is wrong.")
 
         # Raise NodeRuntimeException if there is a critical error during runtime. 
         # This will usually be a user error, a file that can't be read due to security reason,
