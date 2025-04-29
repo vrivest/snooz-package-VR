@@ -1,0 +1,46 @@
+{   
+    "item_name": "ECGArtifactsCorrection",
+    "item_type": "module",
+    "item_api_version": "1.0.0",
+    "dependencies": [
+    ],
+    "module_params":{
+        "cls":"ECGArtifactsCorrection",
+        "name":"ECGArtifactsCorrection",
+        "metadata":{},
+        "file_location":null,
+        "module":"ModulesPackageVR.ECGArtifactsCorrection",
+        "module_label": "ECG Artifacts Correction",
+        "module_category":"Artifacts",
+        "module_author":"",
+        "module_url":"",
+        "module_description":"",
+        "module_options":{},
+        "inputs": {
+            "eeg_signals": {
+                "name": "eeg_signals",
+                "value": "",
+                "connections": {},
+                "sub_plugs": {}
+            },"ecg_signal": {
+                "name": "ecg_signal",
+                "value": "",
+                "connections": {},
+                "sub_plugs": {}
+            },"filename": {
+                "name": "filename",
+                "value": "",
+                "connections": {},
+                "sub_plugs": {}
+            }
+        },
+        "outputs": {
+            "corrected_signal": {
+                "name": "corrected_signal",
+                "value": "",
+                "connections": {},
+                "sub_plugs": {}
+            }
+        }
+    }
+}
