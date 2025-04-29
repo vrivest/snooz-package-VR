@@ -5,5 +5,20 @@
     "package_author": "Vincent Rivest",
     "package_url": "",
     "package_description": "Contient modules pour la correction des artefacts ecg sur eeg",
-    "items": []
+    "items": [
+        {
+            "item_name": "EcgOnEegFilter",
+            "item_type": "module",
+            "item_version": "0.0.0",
+            "item_hooks": [
+                {
+                    "endpoint_name": "module_endpoint",
+                    "parameters": {
+                        "module_category": "Filters",
+                        "module_label": "ECG on EEG Filter"
+                    }
+                }
+            ]
+        }
+    ]
 }

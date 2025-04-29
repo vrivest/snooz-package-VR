@@ -5,5 +5,20 @@
     "package_author": "Vincent Rivest",
     "package_url": "",
     "package_description": "Contient outils pour correction artefacts ecg sur eeg",
-    "items": []
+    "items": [
+        {
+            "item_name": "EcgArtifactsCorrectionOnEeg",
+            "item_type": "tool",
+            "item_version": "0.0.0",
+            "item_hooks": [
+                {
+                    "endpoint_name": "menu_endpoint",
+                    "parameters": {
+                        "menu_category": "Artifacts",
+                        "menu_label": "ECG Artifacts Correction on EEG"
+                    }
+                }
+            ]
+        }
+    ]
 }
