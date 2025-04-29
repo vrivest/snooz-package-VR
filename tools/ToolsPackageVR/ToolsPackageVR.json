@@ -6,19 +6,6 @@
     "package_url": "",
     "package_description": "Contient l'outil de correction des artefacts ECG sur EEG",
     "items": [
-        {
-            "item_name": "EcgArtifactsCorrectionOnEeg",
-            "item_type": "tool",
-            "item_version": "0.0.0",
-            "item_hooks": [
-                {
-                    "endpoint_name": "menu_endpoint",
-                    "parameters": {
-                        "menu_category": "Artifacts",
-                        "menu_label": "ECG Artifacts Correction on EEG"
-                    }
-                }
-            ]
-        }
+        
     ]
 }
