@@ -27,7 +27,7 @@ class EcgOnEegFilter(SciNode):
 
     Returns
     -------
-        corrected_signal: TODO TYPE
+        corrected_signals: TODO TYPE
             TODO DESCRIPTION
         
     """
@@ -43,7 +43,7 @@ class EcgOnEegFilter(SciNode):
         
 
         # Output plugs
-        OutputPlug('corrected_signal',self)
+        OutputPlug('corrected_signals',self)
         
 
         # Init module variables
@@ -72,7 +72,7 @@ class EcgOnEegFilter(SciNode):
 
         Returns
         -------
-            corrected_signal: TODO TYPE
+            corrected_signals: TODO TYPE
                 TODO DESCRIPTION
             
 
@@ -128,5 +128,5 @@ class EcgOnEegFilter(SciNode):
         self._log_manager.log(self.identifier, "This module does nothing.")
 
         return {
-            'corrected_signal': None
+            'corrected_signals': None
         }
