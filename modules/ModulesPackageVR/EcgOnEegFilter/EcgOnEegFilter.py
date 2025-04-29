@@ -5,9 +5,9 @@ See the file LICENCE for full license details.
     EcgOnEegFilter
     TODO CLASS DESCRIPTION
 """
-from flowpipe import SciNode, InputPlug, OutputPlug
-from commons.NodeInputException import NodeInputException
-from commons.NodeRuntimeException import NodeRuntimeException
+from flowpipe import SciNode, InputPlug, OutputPlug # type: ignore
+from commons.NodeInputException import NodeInputException # type: ignore
+from commons.NodeRuntimeException import NodeRuntimeException # type: ignore
 
 DEBUG = False
 
