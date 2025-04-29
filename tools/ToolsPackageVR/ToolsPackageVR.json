@@ -1,0 +1,9 @@
+{
+    "package_name": "ToolsPackageVR",
+    "package_version": "0.0.0",
+    "package_api_version": "2.0.0",
+    "package_author": "Vincent Rivest",
+    "package_url": "",
+    "package_description": "Contient l'outil de correction des art\u00e9facts ECG sur EEG",
+    "items": []
+}
