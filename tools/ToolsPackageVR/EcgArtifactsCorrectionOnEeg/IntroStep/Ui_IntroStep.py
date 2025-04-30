@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
-import themes_rc
+import themes_rc # type: ignore
 
 class Ui_IntroStep(object):
     def setupUi(self, IntroStep):
@@ -28,6 +28,14 @@ class Ui_IntroStep(object):
         self.verticalLayout = QVBoxLayout(IntroStep)
         self.verticalLayout.setSpacing(25)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.verticalLayout.addItem(self.horizontalSpacer)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.verticalLayout.addItem(self.horizontalSpacer_2)
+
         self.label = QLabel(IntroStep)
         self.label.setObjectName(u"label")
 
