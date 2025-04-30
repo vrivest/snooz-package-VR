@@ -23,7 +23,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Demo tool to subtract 2 signals</string>
+      <string>Demo tool to subtract 2 signals example</string>
      </property>
     </widget>
    </item>

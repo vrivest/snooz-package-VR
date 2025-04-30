@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QSizePolicy, QVBoxLayout,
     QWidget)
-import themes_rc # type: ignore
+import themes_rc
 
 class Ui_IntroStep(object):
     def setupUi(self, IntroStep):
@@ -41,6 +41,6 @@ class Ui_IntroStep(object):
 
     def retranslateUi(self, IntroStep):
         IntroStep.setWindowTitle("")
-        self.label.setText(QCoreApplication.translate("IntroStep", u"Demo tool to subtract 2 signals", None))
+        self.label.setText(QCoreApplication.translate("IntroStep", u"Demo tool to subtract 2 signals example", None))
     # retranslateUi
 
