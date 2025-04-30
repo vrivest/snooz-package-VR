@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>IntroStep</class>
  <widget class="QWidget" name="IntroStep">
-  <property name="styleSheet">
-   <string notr="true">font: 12pt &quot;Roboto&quot;;</string>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,16 +11,26 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string></string>
+   <string/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;Roboto&quot;;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>25</number>
    </property>
    <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Tool to filter EEG signals from ECG artifacts</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -35,8 +42,8 @@
    </item>
   </layout>
  </widget>
-  <resources>
-   <include location="../../../../../snooz-toolbox/src/main/python/ui/themes/themes.qrc"/>
-  </resources>
-  <connections/>
- </ui>
+ <resources>
+  <include location="../../../../../snooz-toolbox/src/main/python/ui/themes/themes.qrc"/>
+ </resources>
+ <connections/>
+</ui>

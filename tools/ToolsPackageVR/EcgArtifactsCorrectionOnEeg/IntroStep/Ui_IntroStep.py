@@ -15,19 +15,24 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QLabel, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 import themes_rc
 
 class Ui_IntroStep(object):
     def setupUi(self, IntroStep):
         if not IntroStep.objectName():
             IntroStep.setObjectName(u"IntroStep")
-        IntroStep.setStyleSheet(u"font: 12pt \"Roboto\";")
         IntroStep.resize(730, 590)
+        IntroStep.setStyleSheet(u"font: 12pt \"Roboto\";")
         self.verticalLayout = QVBoxLayout(IntroStep)
         self.verticalLayout.setSpacing(25)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label = QLabel(IntroStep)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout.addWidget(self.label)
+
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer)
@@ -40,5 +45,6 @@ class Ui_IntroStep(object):
 
     def retranslateUi(self, IntroStep):
         IntroStep.setWindowTitle("")
+        self.label.setText(QCoreApplication.translate("IntroStep", u"Tool to filter EEG signals from ECG artifacts", None))
     # retranslateUi
 
