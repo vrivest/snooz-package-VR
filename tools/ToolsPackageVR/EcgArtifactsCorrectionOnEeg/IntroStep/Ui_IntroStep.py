@@ -53,6 +53,6 @@ class Ui_IntroStep(object):
 
     def retranslateUi(self, IntroStep):
         IntroStep.setWindowTitle("")
-        self.label.setText(QCoreApplication.translate("IntroStep", u"Tool to filter EEG signals from ECG artifacts", None))
+        self.label.setText(QCoreApplication.translate("IntroStep", u"Tool to filter EEG signals from ECG artifacts VR", None))
     # retranslateUi
 

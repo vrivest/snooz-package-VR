@@ -9,7 +9,8 @@ See the file LICENCE for full license details.
 
 from qtpy import QtWidgets
 
-from ToolsPackageVR.EcgArtifactsCorrectionOnEeg.IntroStep.Ui_IntroStep import Ui_IntroStep
+#from ToolsPackageVR.EcgArtifactsCorrectionOnEeg.IntroStep.Ui_IntroStep import Ui_IntroStep
+from ExampleToolsPackage.SignalGeneratorV2.IntroStep.Ui_IntroStep import Ui_IntroStep
 from commons.BaseStepView import BaseStepView
 
 class IntroStep(BaseStepView, Ui_IntroStep, QtWidgets.QWidget):

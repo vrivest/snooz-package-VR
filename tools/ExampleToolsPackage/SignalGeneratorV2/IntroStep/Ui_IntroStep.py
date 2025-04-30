@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QSizePolicy, QVBoxLayout,
     QWidget)
-import themes_rc
+import themes_rc # type: ignore
 
 class Ui_IntroStep(object):
     def setupUi(self, IntroStep):
