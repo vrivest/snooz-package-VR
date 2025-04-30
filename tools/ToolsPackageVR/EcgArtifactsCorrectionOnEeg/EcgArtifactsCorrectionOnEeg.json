@@ -9,7 +9,15 @@
         "tool_url": "",
         "tool_description": "Outil de correction des artefacts ECG sur les EEG",
         "package_name": "ToolsPackageVR",
-        "steps": []
+        "steps": [
+            {
+                "name": "ECG Artifacts Correction on EEG",
+                "description": "Introduction",
+                "custom_step_name": "IntroStep",
+                "show_index": false
+            }
+           
+        ]
     },
     "dependencies": [
         {
