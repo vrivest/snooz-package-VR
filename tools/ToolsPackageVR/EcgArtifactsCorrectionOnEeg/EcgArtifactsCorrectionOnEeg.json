@@ -15,8 +15,12 @@
                 "description": "Introduction",
                 "custom_step_name": "IntroStep",
                 "show_index": false
+            },
+            {
+                "name": "PSG Reader",
+                "description": "Param\u00e9trage du lecteur de PSG",
+                "module_id": "77d9b6c0-4781-41c7-8176-d481883fe7a1"
             }
-           
         ]
     },
     "dependencies": [
@@ -25,453 +29,444 @@
             "package_version": "0.0.0",
             "deleteable": false
         },
-
         {
             "package_name": "ModulesPackageVR",
             "package_version": "0.0.0"
         },
-
         {
             "package_name": "CEAMSModules",
             "package_version": "7.0.0"
         }
-       
     ],
-     
     "process_params": {
-    "process_label": "ECG Artifacts Correction on EEG",
-    "subgraph_params": {},
-
-    "nodes": [
-        {
-            "cls": "StringManip",
-            "name": "StringManip",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "String Manip",
-            "module_category": "Parameters",
-            "module_options": {},
-            "inputs": {
-                "input": {
-                    "name": "input",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "77d9b6c0-4781-41c7-8176-d481883fe7a1": "filename"
+        "process_label": "ECG Artifacts Correction on EEG",
+        "subgraph_params": {},
+        "nodes": [
+            {
+                "cls": "StringManip",
+                "name": "StringManip",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "String Manip",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "input": {
+                        "name": "input",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "77d9b6c0-4781-41c7-8176-d481883fe7a1": "filename"
+                        }
+                    },
+                    "prefix": {
+                        "name": "prefix",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "suffix": {
+                        "name": "suffix",
+                        "value": "_ECG_corrected",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "filename_rm": {
+                        "name": "filename_rm",
+                        "value": "0",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "path_rm": {
+                        "name": "path_rm",
+                        "value": "0",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "file_ext_rm": {
+                        "name": "file_ext_rm",
+                        "value": "0",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "prefix": {
-                    "name": "prefix",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "suffix": {
-                    "name": "suffix",
-                    "value": "_ECG_corrected",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "filename_rm": {
-                    "name": "filename_rm",
-                    "value": "0",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "path_rm": {
-                    "name": "path_rm",
-                    "value": "0",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "file_ext_rm": {
-                    "name": "file_ext_rm",
-                    "value": "0",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
-            },
-            "outputs": {
-                "output": {
-                    "name": "output",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
-                            "output_filename"
-                        ]
-                    }
-                }
-            },
-            "module": "CEAMSModules.StringManip",
-            "identifier": "75df27ac-8900-4b87-a32f-90df4e886137",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": -52.0,
-            "pos_y": -62.0
-        },
-        {
-            "cls": "Constant",
-            "name": "Constant",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "Constant",
-            "module_category": "Parameters",
-            "module_options": {},
-            "inputs": {
-                "constant": {
-                    "name": "constant",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "77d9b6c0-4781-41c7-8176-d481883fe7a1": "filename"
-                    }
-                }
-            },
-            "outputs": {
-                "constant": {
-                    "name": "constant",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
-                            "input_filename"
-                        ],
-                        "b7b96b6c-4f05-4427-b602-b00f5c573119": [
-                            "filename"
-                        ]
-                    }
-                }
-            },
-            "module": "CEAMSModules.Constant",
-            "identifier": "a125145f-10ee-4a04-897e-4f8fee6a324d",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": 83.0,
-            "pos_y": -223.0
-        },
-        {
-            "cls": "PSGWriter",
-            "name": "PSGWriter",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "PSGWriter",
-            "module_category": "Files I/O",
-            "module_options": {},
-            "inputs": {
-                "input_filename": {
-                    "name": "input_filename",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "a125145f-10ee-4a04-897e-4f8fee6a324d": "constant"
+                "outputs": {
+                    "output": {
+                        "name": "output",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
+                                "output_filename"
+                            ]
+                        }
                     }
                 },
-                "output_filename": {
-                    "name": "output_filename",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "75df27ac-8900-4b87-a32f-90df4e886137": "output"
+                "module": "CEAMSModules.StringManip",
+                "identifier": "75df27ac-8900-4b87-a32f-90df4e886137",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -52.0,
+                "pos_y": -62.0
+            },
+            {
+                "cls": "Constant",
+                "name": "Constant",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Constant",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "constant": {
+                        "name": "constant",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "77d9b6c0-4781-41c7-8176-d481883fe7a1": "filename"
+                        }
                     }
                 },
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "b7b96b6c-4f05-4427-b602-b00f5c573119": "corrected_signals"
+                "outputs": {
+                    "constant": {
+                        "name": "constant",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
+                                "input_filename"
+                            ],
+                            "b7b96b6c-4f05-4427-b602-b00f5c573119": [
+                                "filename"
+                            ]
+                        }
                     }
                 },
-                "new_events": {
-                    "name": "new_events",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
+                "module": "CEAMSModules.Constant",
+                "identifier": "a125145f-10ee-4a04-897e-4f8fee6a324d",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
                 },
-                "events_to_remove": {
-                    "name": "events_to_remove",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "overwrite_events": {
-                    "name": "overwrite_events",
-                    "value": "False",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "overwrite_signals": {
-                    "name": "overwrite_signals",
-                    "value": "True",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
+                "pos_x": 83.0,
+                "pos_y": -223.0
             },
-            "outputs": {},
-            "module": "CEAMSModules.PSGWriter",
-            "identifier": "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": 654.0,
-            "pos_y": 27.0
-        },
-        {
-            "cls": "AliasSignals",
-            "name": "AliasSignals",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "Alias Signals",
-            "module_category": "Parameters",
-            "module_options": {},
-            "inputs": {
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "77d9b6c0-4781-41c7-8176-d481883fe7a1": "signals"
+            {
+                "cls": "PSGWriter",
+                "name": "PSGWriter",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "PSGWriter",
+                "module_category": "Files I/O",
+                "module_options": {},
+                "inputs": {
+                    "input_filename": {
+                        "name": "input_filename",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "a125145f-10ee-4a04-897e-4f8fee6a324d": "constant"
+                        }
+                    },
+                    "output_filename": {
+                        "name": "output_filename",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "75df27ac-8900-4b87-a32f-90df4e886137": "output"
+                        }
+                    },
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "b7b96b6c-4f05-4427-b602-b00f5c573119": "corrected_signals"
+                        }
+                    },
+                    "new_events": {
+                        "name": "new_events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "events_to_remove": {
+                        "name": "events_to_remove",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "overwrite_events": {
+                        "name": "overwrite_events",
+                        "value": "False",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "overwrite_signals": {
+                        "name": "overwrite_signals",
+                        "value": "True",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "alias": {
-                    "name": "alias",
-                    "value": "ECG",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
+                "outputs": {},
+                "module": "CEAMSModules.PSGWriter",
+                "identifier": "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": 654.0,
+                "pos_y": 27.0
             },
-            "outputs": {
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "b7b96b6c-4f05-4427-b602-b00f5c573119": [
-                            "ecg_signal"
-                        ]
+            {
+                "cls": "AliasSignals",
+                "name": "AliasSignals",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Alias Signals",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "77d9b6c0-4781-41c7-8176-d481883fe7a1": "signals"
+                        }
+                    },
+                    "alias": {
+                        "name": "alias",
+                        "value": "ECG",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "channels_name": {
-                    "name": "channels_name",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
-            },
-            "module": "CEAMSModules.AliasSignals",
-            "identifier": "2dda4929-dfe7-4ef2-971b-db909ef3656b",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": -50.0,
-            "pos_y": 267.0
-        },
-        {
-            "cls": "AliasSignals",
-            "name": "AliasSignals",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "Alias Signals",
-            "module_category": "Parameters",
-            "module_options": {},
-            "inputs": {
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "77d9b6c0-4781-41c7-8176-d481883fe7a1": "signals"
+                "outputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "b7b96b6c-4f05-4427-b602-b00f5c573119": [
+                                "ecg_signal"
+                            ]
+                        }
+                    },
+                    "channels_name": {
+                        "name": "channels_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "alias": {
-                    "name": "alias",
-                    "value": "EEG",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
+                "module": "CEAMSModules.AliasSignals",
+                "identifier": "2dda4929-dfe7-4ef2-971b-db909ef3656b",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -50.0,
+                "pos_y": 267.0
             },
-            "outputs": {
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "b7b96b6c-4f05-4427-b602-b00f5c573119": [
-                            "eeg_signals"
-                        ]
+            {
+                "cls": "AliasSignals",
+                "name": "AliasSignals",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "Alias Signals",
+                "module_category": "Parameters",
+                "module_options": {},
+                "inputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "77d9b6c0-4781-41c7-8176-d481883fe7a1": "signals"
+                        }
+                    },
+                    "alias": {
+                        "name": "alias",
+                        "value": "EEG",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "channels_name": {
-                    "name": "channels_name",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
-            },
-            "module": "CEAMSModules.AliasSignals",
-            "identifier": "fd664d1a-9a54-4be9-900c-cc5900adfd4c",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": -53.0,
-            "pos_y": 139.0
-        },
-        {
-            "cls": "PSGReader",
-            "name": "PSGReader",
-            "metadata": {},
-            "file_location": "",
-            "module_label": "PSGReader",
-            "module_category": "Files I/O",
-            "module_options": {
-                "alias": {
-                    "value": "EEG;ECG",
-                    "tooltip": "List of aliases separated by a semicolon(;) character"
-                },
-                "file_selection_only": {
-                    "value": "0",
-                    "tooltip": "Set it to 1 if you only need to select a file and not its montages and channels."
-                }
-            },
-            "inputs": {
-                "files": {
-                    "name": "files",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "alias": {
-                    "name": "alias",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
-            },
-            "outputs": {
-                "filename": {
-                    "name": "filename",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "a125145f-10ee-4a04-897e-4f8fee6a324d": [
-                            "constant"
-                        ],
-                        "75df27ac-8900-4b87-a32f-90df4e886137": [
-                            "input"
-                        ]
+                "outputs": {
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "b7b96b6c-4f05-4427-b602-b00f5c573119": [
+                                "eeg_signals"
+                            ]
+                        }
+                    },
+                    "channels_name": {
+                        "name": "channels_name",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "signals": {
-                    "name": "signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "fd664d1a-9a54-4be9-900c-cc5900adfd4c": [
-                            "signals"
-                        ],
-                        "2dda4929-dfe7-4ef2-971b-db909ef3656b": [
-                            "signals"
-                        ]
+                "module": "CEAMSModules.AliasSignals",
+                "identifier": "fd664d1a-9a54-4be9-900c-cc5900adfd4c",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -53.0,
+                "pos_y": 139.0
+            },
+            {
+                "cls": "PSGReader",
+                "name": "PSGReader",
+                "metadata": {},
+                "file_location": "",
+                "module_label": "PSGReader",
+                "module_category": "Files I/O",
+                "module_options": {
+                    "alias": {
+                        "value": "EEG;ECG",
+                        "tooltip": "List of aliases separated by a semicolon(;) character"
+                    },
+                    "file_selection_only": {
+                        "value": "0",
+                        "tooltip": "Set it to 1 if you only need to select a file and not its montages and channels."
                     }
                 },
-                "events": {
-                    "name": "events",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "sleep_stages": {
-                    "name": "sleep_stages",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                },
-                "subject_info": {
-                    "name": "subject_info",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {}
-                }
-            },
-            "module": "CEAMSModules.PSGReader",
-            "identifier": "77d9b6c0-4781-41c7-8176-d481883fe7a1",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "CEAMSModules"
-            },
-            "pos_x": -370.0,
-            "pos_y": -71.0
-        },
-        {
-            "cls": "EcgOnEegFilter",
-            "name": "EcgOnEegFilter",
-            "metadata": {},
-            "file_location": null,
-            "module": "ModulesPackageVR.EcgOnEegFilter",
-            "module_label": "ECG on EEG Filter",
-            "module_category": "Filters",
-            "module_author": "",
-            "module_url": "",
-            "module_description": "",
-            "module_options": {},
-            "inputs": {
-                "eeg_signals": {
-                    "name": "eeg_signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "fd664d1a-9a54-4be9-900c-cc5900adfd4c": "signals"
+                "inputs": {
+                    "files": {
+                        "name": "files",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "alias": {
+                        "name": "alias",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "ecg_signal": {
-                    "name": "ecg_signal",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "2dda4929-dfe7-4ef2-971b-db909ef3656b": "signals"
+                "outputs": {
+                    "filename": {
+                        "name": "filename",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "a125145f-10ee-4a04-897e-4f8fee6a324d": [
+                                "constant"
+                            ],
+                            "75df27ac-8900-4b87-a32f-90df4e886137": [
+                                "input"
+                            ]
+                        }
+                    },
+                    "signals": {
+                        "name": "signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "fd664d1a-9a54-4be9-900c-cc5900adfd4c": [
+                                "signals"
+                            ],
+                            "2dda4929-dfe7-4ef2-971b-db909ef3656b": [
+                                "signals"
+                            ]
+                        }
+                    },
+                    "events": {
+                        "name": "events",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "sleep_stages": {
+                        "name": "sleep_stages",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
+                    },
+                    "subject_info": {
+                        "name": "subject_info",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {}
                     }
                 },
-                "filename": {
-                    "name": "filename",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "a125145f-10ee-4a04-897e-4f8fee6a324d": "constant"
+                "module": "CEAMSModules.PSGReader",
+                "identifier": "77d9b6c0-4781-41c7-8176-d481883fe7a1",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "CEAMSModules"
+                },
+                "pos_x": -370.0,
+                "pos_y": -71.0
+            },
+            {
+                "cls": "EcgOnEegFilter",
+                "name": "EcgOnEegFilter",
+                "metadata": {},
+                "file_location": null,
+                "module": "ModulesPackageVR.EcgOnEegFilter",
+                "module_label": "ECG on EEG Filter",
+                "module_category": "Filters",
+                "module_author": "",
+                "module_url": "",
+                "module_description": "",
+                "module_options": {},
+                "inputs": {
+                    "eeg_signals": {
+                        "name": "eeg_signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "fd664d1a-9a54-4be9-900c-cc5900adfd4c": "signals"
+                        }
+                    },
+                    "ecg_signal": {
+                        "name": "ecg_signal",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "2dda4929-dfe7-4ef2-971b-db909ef3656b": "signals"
+                        }
+                    },
+                    "filename": {
+                        "name": "filename",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "a125145f-10ee-4a04-897e-4f8fee6a324d": "constant"
+                        }
                     }
-                }
-            },
-            "outputs": {
-                "corrected_signals": {
-                    "name": "corrected_signals",
-                    "value": "",
-                    "sub_plugs": {},
-                    "connections": {
-                        "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
-                            "signals"
-                        ]
+                },
+                "outputs": {
+                    "corrected_signals": {
+                        "name": "corrected_signals",
+                        "value": "",
+                        "sub_plugs": {},
+                        "connections": {
+                            "f1af2dfe-5130-4c71-a5a3-2b0fa2355caf": [
+                                "signals"
+                            ]
+                        }
                     }
-                }
-            },
-            "identifier": "b7b96b6c-4f05-4427-b602-b00f5c573119",
-            "activation_state": "activated",
-            "package": {
-                "package_name": "ModulesPackageVR"
-            },
-            "pos_x": 360.0,
-            "pos_y": 182.0
-        }
-    ]
-}
-
-        
-
-    
+                },
+                "identifier": "b7b96b6c-4f05-4427-b602-b00f5c573119",
+                "activation_state": "activated",
+                "package": {
+                    "package_name": "ModulesPackageVR"
+                },
+                "pos_x": 360.0,
+                "pos_y": 182.0
+            }
+        ]
+    }
 }
