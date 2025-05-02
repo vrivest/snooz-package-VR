@@ -8,6 +8,7 @@ See the file LICENCE for full license details.
 from flowpipe import SciNode, InputPlug, OutputPlug # type: ignore
 from commons.NodeInputException import NodeInputException # type: ignore
 from commons.NodeRuntimeException import NodeRuntimeException # type: ignore
+import numpy as np
 
 DEBUG = False
 
@@ -57,6 +58,8 @@ class EcgOnEegFilter(SciNode):
         self._is_master = False 
     
     def compute(self, eeg_signals,ecg_signal,filename):
+        a = np.array([4, 7, 9])
+        b = np.array ([1, 3, 6])
         """
         TODO DESCRIPTION
 
