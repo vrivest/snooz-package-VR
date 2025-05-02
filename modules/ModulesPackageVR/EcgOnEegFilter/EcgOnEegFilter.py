@@ -9,6 +9,7 @@ from flowpipe import SciNode, InputPlug, OutputPlug # type: ignore
 from commons.NodeInputException import NodeInputException # type: ignore
 from commons.NodeRuntimeException import NodeRuntimeException # type: ignore
 import numpy as np
+from scipy.signal import find_peaks
 
 DEBUG = False
 
@@ -59,7 +60,10 @@ class EcgOnEegFilter(SciNode):
     
     def compute(self, eeg_signals,ecg_signal,filename):
         a = np.array([4, 7, 9])
+        c = np.array([[1, 2, 3], [4, 5, 6]])
         b = np.array ([1, 3, 6])
+        eeg_signals
+        
         """
         TODO DESCRIPTION
 
