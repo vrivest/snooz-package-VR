@@ -61,9 +61,20 @@ class EcgOnEegFilter(SciNode):
     def compute(self, eeg_signals,ecg_signal,filename):
         a = np.array([4, 7, 9])
         c = np.array([[1, 2, 3], [4, 5, 6]])
+        val = np.max(ecg_signal[0].samples)
+
+
+        fs_ecg = ecg_signal[0].sample_rate
+        fs_eeg = eeg_signals[0].sample_rate
+        #peaks, _ = find_peaks()    
+
         b = np.array ([1, 3, 6])
-        eeg_signals
-        
+
+
+
+
+
+
         """
         TODO DESCRIPTION
 
