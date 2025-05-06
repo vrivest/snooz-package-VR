@@ -10,6 +10,8 @@ from commons.NodeInputException import NodeInputException # type: ignore
 from commons.NodeRuntimeException import NodeRuntimeException # type: ignore
 import numpy as np
 from scipy.signal import find_peaks
+from scipy.signal import detrend
+
 
 DEBUG = False
 
@@ -74,13 +76,19 @@ class EcgOnEegFilter(SciNode):
         Nech_ecg = ecg_signal[0].samples.size
         Nech_eeg = eeg_signals[0].samples.size
 
-        ecg = np.zeros((1, Nech_ecg), dtype=float)
-        ecg[0, :] = ecg_signal[0].samples
-       
+        ECG = np.zeros((1, Nech_ecg), dtype=float)
+        ECG[0, :] = ecg_signal[0].samples
+
+        EEG = np.zeros((Neeg, Nech_eeg), dtype = float)
+        
+        for i in range(0, 17, 1):
+            EEG[i, :] = eeg_signals[i].samples
+
+        EEG = detrend(EEG, type='linear')
+        ECG = detrend(ECG, type='linear')
 
         b = np.array ([1, 3, 6])
-        print("ECG", ecg)
-        print("ECG signal", ecg_signal[0].samples)
+        
 
 
 
