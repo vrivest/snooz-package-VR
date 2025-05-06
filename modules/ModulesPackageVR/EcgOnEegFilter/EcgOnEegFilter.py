@@ -59,14 +59,27 @@ class EcgOnEegFilter(SciNode):
         self._is_master = False 
     
     def compute(self, eeg_signals,ecg_signal,filename):
+        #test
+
         a = np.array([4, 7, 9])
         c = np.array([[1, 2, 3], [4, 5, 6]])
         val = np.max(ecg_signal[0].samples)
-
+        #test
 
         fs_ecg = ecg_signal[0].sample_rate
         fs_eeg = eeg_signals[0].sample_rate
-        #peaks, _ = find_peaks()    
+
+        Neeg = len(eeg_signals)
+
+        Nech_ecg = ecg_signal[0].samples.size
+        Nech_eeg = eeg_signals[0].samples.size
+
+        print("Taille attendue :", Nech_ecg)
+        print("Taille des données :", len(ecg_signal[0].samples))
+
+        ecg = np.zeros((1, Nech_ecg), dtype=float)
+        ecg[0] = ecg_signal[0].samples
+       
 
         b = np.array ([1, 3, 6])
 
