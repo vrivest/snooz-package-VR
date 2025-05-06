@@ -79,6 +79,8 @@ class EcgOnEegFilter(SciNode):
        
 
         b = np.array ([1, 3, 6])
+        print("ECG", ecg)
+        print("ECG signal", ecg_signal[0].samples)
 
 
 
