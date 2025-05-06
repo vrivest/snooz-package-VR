@@ -75,7 +75,7 @@ class EcgOnEegFilter(SciNode):
         Nech_eeg = eeg_signals[0].samples.size
 
         ecg = np.zeros((1, Nech_ecg), dtype=float)
-        ecg[0] = ecg_signal[0].samples
+        ecg[0, :] = ecg_signal[0].samples
        
 
         b = np.array ([1, 3, 6])
