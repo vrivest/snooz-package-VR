@@ -50,6 +50,19 @@ class EcgOnEegFilter(SciNode):
         return mat_indices_debut_fin_fenetres_ondes_R
 
 
+    def plages_EEG_a_filtrer(self, nb_R_waves, mat_idx_debut_fin_fenetres):
+       
+        fenetres_idx = np.zeros((nb_R_waves, (mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)), dtype = int) # Initialisation de la matrice avec des 0
+        
+        Vecteur_idx_EEG_a_filtrer = np.zeros(((mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)*nb_R_waves), dtype = int)# Initialisation de la matrice avec des 0
+
+        for i in range(0, nb_R_waves, 1):
+           fenetres_idx[i,:] = np.arrange(mat_idx_debut_fin_fenetres[i,0], mat_idx_debut_fin_fenetres[i,1] +1)
+
+        Vecteur_idx_EEG_a_filtrer = fenetres_idx.T.reshape(1, -1)
+
+        return Vecteur_idx_EEG_a_filtrer
+
     def __init__(self, **kwargs):
         """ Initialize module EcgOnEegFilter """
         super().__init__(**kwargs)
