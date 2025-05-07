@@ -36,6 +36,20 @@ class EcgOnEegFilter(SciNode):
             TODO DESCRIPTION
         
     """
+
+    def fenetres_ondes_R(self, nb_R_waves, temps_fenetre, vecteur_indices_ondes_R_ECG, fs_ECG, fs_EEG):
+
+        intervalle = math.ceil( ((temps_fenetre/2)*fs_ECG) * (fs_EEG/fs_ECG) )
+        #initialisation de la matrice avec des 0 partout
+        mat_indices_debut_fin_fenetres_ondes_R = np.zeros((nb_R_waves, 2), dtype = int)
+        #indices de début (1ere colonne)
+        mat_indices_debut_fin_fenetres_ondes_R[:, 0] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) - intervalle
+        #indices de fin (2e colonne)
+        mat_indices_debut_fin_fenetres_ondes_R[:, 1] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) + intervalle
+
+        return mat_indices_debut_fin_fenetres_ondes_R
+
+
     def __init__(self, **kwargs):
         """ Initialize module EcgOnEegFilter """
         super().__init__(**kwargs)
@@ -61,17 +75,7 @@ class EcgOnEegFilter(SciNode):
         # There can only be 1 master module per process.
         self._is_master = False 
     
-    def fenetres_ondes_R (nb_R_waves, temps_fenetre, vecteur_indices_ondes_R_ECG, fs_ECG, fs_EEG):
-
-        intervalle = math.ceil( ((temps_fenetre/2)*fs_ECG) * (fs_EEG/fs_ECG) )
-        #initialisation de la matrice avec des 0 partout
-        mat_indices_debut_fin_fenetres_ondes_R = np.zeros((nb_R_waves, 2), dtype = int)
-        #indices de début (1ere colonne)
-        mat_indices_debut_fin_fenetres_ondes_R[:, 0] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) - intervalle
-        #indices de fin (2e colonne)
-        mat_indices_debut_fin_fenetres_ondes_R[:, 1] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) + intervalle
-
-        return mat_indices_debut_fin_fenetres_ondes_R
+    
  
 
     def compute(self, eeg_signals,ecg_signal,filename):
@@ -107,7 +111,8 @@ class EcgOnEegFilter(SciNode):
         
         nb_ondes_R = peaks_idx.size
         grandeur_fenetres = 0.2
-
+        
+        mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         
 
 
