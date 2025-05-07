@@ -86,15 +86,18 @@ class EcgOnEegFilter(SciNode):
 
         EEG = detrend(EEG, type='linear')
         ECG = detrend(ECG, type='linear')
+        max_ECG = np.max(ecg_signal[0].samples)
 
-        b = np.array ([1, 3, 6])
+        #Détection des pics QRS et création d'un vecteur d'indices des pics QRS
+
+        peaks, properties = find_peaks(ECG, height=(0.75*max_ECG))
+        
+
         
 
 
 
-
-
-
+        b = np.array ([1, 3, 6])
         """
         TODO DESCRIPTION
 
