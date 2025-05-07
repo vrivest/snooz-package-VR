@@ -130,7 +130,17 @@ class EcgOnEegFilter(SciNode):
         
         Vecteur_idx_filtrage_canaux_EEG = self.plages_EEG_a_filtrer(nb_ondes_R, mat_fenetres_ondes_R_idx)
 
+        donnees_EEG_corrompues_cardio = EEG[:, Vecteur_idx_filtrage_canaux_EEG]
 
+        #########################      Conception du FILTRE     ###############################
+
+        P = np.dot (donnees_EEG_corrompues_cardio, donnees_EEG_corrompues_cardio.T)
+        U, _, _ = np.linalg.svd(P)
+        U1 = U[:, 0].flatten()
+
+
+
+        ########################################################################################
 
         b = np.array ([1, 3, 6])
         """
