@@ -62,6 +62,7 @@ class EcgOnEegFilter(SciNode):
         Vecteur_idx_EEG_a_filtrer = fenetres_idx.T.reshape(1, -1)
 
         return Vecteur_idx_EEG_a_filtrer
+    
 
     def __init__(self, **kwargs):
         """ Initialize module EcgOnEegFilter """
@@ -127,7 +128,9 @@ class EcgOnEegFilter(SciNode):
         
         mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         
-
+        mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
+        
+        Vecteur_idx_filtrage_canaux_EEG = self.plages_EEG_a_filtrer(nb_ondes_R, mat_fenetres_ondes_R_idx)
 
 
         b = np.array ([1, 3, 6])
