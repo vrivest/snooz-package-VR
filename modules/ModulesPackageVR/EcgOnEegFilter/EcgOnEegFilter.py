@@ -57,10 +57,10 @@ class EcgOnEegFilter(SciNode):
         Vecteur_idx_EEG_a_filtrer = np.zeros(((mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)*nb_R_waves), dtype = int)# Initialisation de la matrice avec des 0
 
         for i in range(0, nb_R_waves, 1):
-           fenetres_idx[i,:] = np.arrange(mat_idx_debut_fin_fenetres[i,0], mat_idx_debut_fin_fenetres[i,1] +1)
+           fenetres_idx[i,:] = np.arange(mat_idx_debut_fin_fenetres[i,0], mat_idx_debut_fin_fenetres[i,1] +1)
 
-        Vecteur_idx_EEG_a_filtrer = fenetres_idx.T.reshape(1, -1)
-
+        Vecteur_idx_EEG_a_filtrer = fenetres_idx.reshape(1, -1).flatten()
+        
         return Vecteur_idx_EEG_a_filtrer
     
 
@@ -128,9 +128,8 @@ class EcgOnEegFilter(SciNode):
         
         mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         
-        mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
-        
         Vecteur_idx_filtrage_canaux_EEG = self.plages_EEG_a_filtrer(nb_ondes_R, mat_fenetres_ondes_R_idx)
+
 
 
         b = np.array ([1, 3, 6])
