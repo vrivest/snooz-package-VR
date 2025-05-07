@@ -76,8 +76,8 @@ class EcgOnEegFilter(SciNode):
         Nech_ecg = ecg_signal[0].samples.size
         Nech_eeg = eeg_signals[0].samples.size
 
-        ECG = np.zeros((1, Nech_ecg), dtype=float)
-        ECG[0, :] = ecg_signal[0].samples
+        ECG = np.zeros ((Nech_ecg), dtype=float)
+        ECG = ecg_signal[0].samples
 
         EEG = np.zeros((Neeg, Nech_eeg), dtype = float)
         
@@ -88,10 +88,11 @@ class EcgOnEegFilter(SciNode):
         ECG = detrend(ECG, type='linear')
         max_ECG = np.max(ecg_signal[0].samples)
 
-        #Détection des pics QRS et création d'un vecteur d'indices des pics QRS
-
-        peaks, properties = find_peaks(ECG, height=(0.75*max_ECG))
+        #Détection des pics QRS et création d'un vecteur d'indices des pics QRS 
+        peaks_idx, properties = find_peaks(ECG, height=(0.75*max_ECG))
         
+        nb_ondes_R = peaks_idx.size
+        grandeur_fenetres = 0.2
 
         
 
