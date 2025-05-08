@@ -143,8 +143,6 @@ class EcgOnEegFilter(SciNode):
             eeg_signals[i].is_modified = True
         ########################################################################################
 
-        eeg_signals.is_modified = True
-
         """
         TODO DESCRIPTION
 
