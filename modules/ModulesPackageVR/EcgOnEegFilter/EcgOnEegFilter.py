@@ -138,6 +138,9 @@ class EcgOnEegFilter(SciNode):
 
         EEG_clean = np.dot(Filtre, EEG)
 
+        for i in range(0, 17, 1):
+            eeg_signals[i].samples = EEG_clean[i]
+
         ########################################################################################
 
         """
@@ -211,5 +214,5 @@ class EcgOnEegFilter(SciNode):
         self._log_manager.log(self.identifier, "This module does nothing.")
 
         return {
-            'corrected_signals': None
+            'corrected_signals': eeg_signals
         }
