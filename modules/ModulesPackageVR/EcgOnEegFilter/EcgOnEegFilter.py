@@ -107,7 +107,7 @@ class EcgOnEegFilter(SciNode):
 
         EEG = np.zeros((Neeg, Nech_eeg), dtype = float)
         
-        for i in range(0, 17, 1):
+        for i in range(0, Neeg, 1):
             EEG[i, :] = eeg_signals[i].samples
 
         EEG = detrend(EEG, type='linear')
@@ -138,10 +138,12 @@ class EcgOnEegFilter(SciNode):
 
         EEG_clean = np.dot(Filtre, EEG)
 
-        for i in range(0, 17, 1):
+        for i in range(0, Neeg, 1):
             eeg_signals[i].samples = EEG_clean[i]
-
+            eeg_signals[i].is_modified = True
         ########################################################################################
+
+        eeg_signals.is_modified = True
 
         """
         TODO DESCRIPTION
