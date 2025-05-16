@@ -118,7 +118,7 @@ class EcgOnEegFilter(SciNode):
         peaks_idx, properties = find_peaks(ECG, height=(0.75*max_ECG))
         
         nb_ondes_R = peaks_idx.size
-        grandeur_fenetres = 0.2
+        grandeur_fenetres = 0.1
         
         mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         

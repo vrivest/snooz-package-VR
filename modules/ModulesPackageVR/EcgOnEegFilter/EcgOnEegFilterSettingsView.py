@@ -8,7 +8,7 @@ See the file LICENCE for full license details.
 from qtpy import QtWidgets
 
 from ModulesPackageVR.EcgOnEegFilter.Ui_EcgOnEegFilterSettingsView import Ui_EcgOnEegFilterSettingsView
-from commons.BaseSettingsView import BaseSettingsView
+from commons.BaseSettingsView import BaseSettingsView # type: ignore
 
 class EcgOnEegFilterSettingsView(BaseSettingsView, Ui_EcgOnEegFilterSettingsView, QtWidgets.QWidget):
     """
