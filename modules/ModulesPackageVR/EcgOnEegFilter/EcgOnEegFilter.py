@@ -55,13 +55,16 @@ class EcgOnEegFilter(SciNode):
 
     def plages_EEG_a_filtrer(self, nb_R_waves, mat_idx_debut_fin_fenetres):
        
-        fenetres_idx = np.zeros((nb_R_waves, (mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)), dtype = int) # Initialisation de la matrice avec des 0
-        
-        Vecteur_idx_EEG_a_filtrer = np.zeros(((mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)*nb_R_waves), dtype = int)# Initialisation de la matrice avec des 0
+       # Initialisation des matrices avec des 0
+        fenetres_idx = np.zeros((nb_R_waves, (mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)), dtype = int) 
+        Vecteur_idx_EEG_a_filtrer = np.zeros(((mat_idx_debut_fin_fenetres[0, 1] - mat_idx_debut_fin_fenetres[0, 0] + 1)*nb_R_waves), dtype = int)
 
+        #Étendues des fenetres QRS en une matrice
         for i in range(0, nb_R_waves, 1):
            fenetres_idx[i,:] = np.arange(mat_idx_debut_fin_fenetres[i,0], mat_idx_debut_fin_fenetres[i,1] +1)
 
+        #Concatenation en un vecteur tous les indices des fenetres QRS 
+        #(donc indices des donnees EEG potentiellement corrompues)
         Vecteur_idx_EEG_a_filtrer = fenetres_idx.reshape(1, -1).flatten()
         
         return Vecteur_idx_EEG_a_filtrer
@@ -140,7 +143,7 @@ class EcgOnEegFilter(SciNode):
         #Matrice de toutes les données EEG potentiellement corrompues de tous les canaux
         donnees_EEG_corrompues_cardio = EEG[:, Vecteur_idx_filtrage_canaux_EEG]
 
-        #########################      Conception mathématique du FILTRE     ###############################
+        #########################      Conception matricielle du FILTRE     ###############################
 
         P = np.dot (donnees_EEG_corrompues_cardio, donnees_EEG_corrompues_cardio.T)
         U, _, _ = np.linalg.svd(P)
@@ -154,7 +157,7 @@ class EcgOnEegFilter(SciNode):
          
         EEG_clean = np.dot(Filtre, EEG)
 
-        # Et cortrection des signaux EEG dans le dictionnaire des données
+        # Et correction des signaux EEG dans le dictionnaire des données
         for i in range(0, Neeg, 1):
             eeg_signals[i].samples = EEG_clean[i]
             eeg_signals[i].is_modified = True
