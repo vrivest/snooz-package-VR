@@ -38,13 +38,16 @@ class EcgOnEegFilter(SciNode):
     """
 
     def fenetres_ondes_R(self, nb_R_waves, temps_fenetre, vecteur_indices_ondes_R_ECG, fs_ECG, fs_EEG):
-
+        
         intervalle = math.ceil( ((temps_fenetre/2)*fs_ECG) * (fs_EEG/fs_ECG) )
+
         #initialisation de la matrice avec des 0 partout
         mat_indices_debut_fin_fenetres_ondes_R = np.zeros((nb_R_waves, 2), dtype = int)
-        #indices de début (1ere colonne)
+
+        #indices de début des fenetres (1ere colonne)
         mat_indices_debut_fin_fenetres_ondes_R[:, 0] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) - intervalle
-        #indices de fin (2e colonne)
+
+        #indices de fin des fenetres (2e colonne)
         mat_indices_debut_fin_fenetres_ondes_R[:, 1] = np.floor(vecteur_indices_ondes_R_ECG*(fs_EEG/fs_ECG)) + intervalle
 
         return mat_indices_debut_fin_fenetres_ondes_R
@@ -94,32 +97,40 @@ class EcgOnEegFilter(SciNode):
 
     def compute(self, eeg_signals,ecg_signal,filename):
        
+        #Fréquences d'échantillonnage de l'ECG et des canaux EEG
         fs_ecg = ecg_signal[0].sample_rate
         fs_eeg = eeg_signals[0].sample_rate
 
+        #Nombre de canaux EEG
         Neeg = len(eeg_signals)
 
+        #Nombre d'échantillons ECG et EEG pour toute la nuit
         Nech_ecg = ecg_signal[0].samples.size
         Nech_eeg = eeg_signals[0].samples.size
 
+        #Stocker les données ECG dans un vecteur
         ECG = np.zeros ((Nech_ecg), dtype=float)
         ECG = ecg_signal[0].samples
-
-        EEG = np.zeros((Neeg, Nech_eeg), dtype = float)
         
+        #Stocker les données EEG de tous les canaux dans une matrice
+        EEG = np.zeros((Neeg, Nech_eeg), dtype = float)
         for i in range(0, Neeg, 1):
             EEG[i, :] = eeg_signals[i].samples
 
+        #Detrend linéaire des données EEG et ECG
         EEG = detrend(EEG, type='linear')
         ECG = detrend(ECG, type='linear')
-        max_ECG = np.max(ecg_signal[0].samples)
 
-        #Détection des pics QRS et création d'un vecteur d'indices des pics QRS 
+        #Détection des pics QRS et création d'un vecteur d'indices des pics QRS
+        max_ECG = np.max(ecg_signal[0].samples) 
         peaks_idx, properties = find_peaks(ECG, height=(0.75*max_ECG))
-        
         nb_ondes_R = peaks_idx.size
+
+        #Grandeur des fenetres centrees autour des ondes R ECG en secondes
+        #Parametre interessant a modifier pour l'amelioration de la correction des artefacts
         grandeur_fenetres = 0.1
         
+        #Appel de la fonction qui stocke les indices de début et de fin de toutes les fenetres QRS dans une matrice
         mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         
         Vecteur_idx_filtrage_canaux_EEG = self.plages_EEG_a_filtrer(nb_ondes_R, mat_fenetres_ondes_R_idx)
