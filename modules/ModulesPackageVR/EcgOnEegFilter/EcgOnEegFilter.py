@@ -63,7 +63,7 @@ class EcgOnEegFilter(SciNode):
         for i in range(0, nb_R_waves, 1):
            fenetres_idx[i,:] = np.arange(mat_idx_debut_fin_fenetres[i,0], mat_idx_debut_fin_fenetres[i,1] +1)
 
-        #Concatenation en un vecteur tous les indices des fenetres QRS 
+        #Concatenation en un vecteur de tous les indices des fenetres QRS 
         #(donc indices des donnees EEG potentiellement corrompues)
         Vecteur_idx_EEG_a_filtrer = fenetres_idx.reshape(1, -1).flatten()
         
