@@ -133,11 +133,14 @@ class EcgOnEegFilter(SciNode):
         #Appel de la fonction qui stocke les indices de début et de fin de toutes les fenetres QRS dans une matrice
         mat_fenetres_ondes_R_idx = self.fenetres_ondes_R(nb_ondes_R, grandeur_fenetres, peaks_idx, fs_ecg, fs_eeg)
         
+        #Appel de la fonction qui concatene en un vecteur tous les indices des fenetres QRS 
+        #(donc indices des donnees EEG potentiellement corrompues)
         Vecteur_idx_filtrage_canaux_EEG = self.plages_EEG_a_filtrer(nb_ondes_R, mat_fenetres_ondes_R_idx)
 
+        #Matrice de toutes les données EEG potentiellement corrompues de tous les canaux
         donnees_EEG_corrompues_cardio = EEG[:, Vecteur_idx_filtrage_canaux_EEG]
 
-        #########################      Conception du FILTRE     ###############################
+        #########################      Conception mathématique du FILTRE     ###############################
 
         P = np.dot (donnees_EEG_corrompues_cardio, donnees_EEG_corrompues_cardio.T)
         U, _, _ = np.linalg.svd(P)
@@ -147,8 +150,11 @@ class EcgOnEegFilter(SciNode):
         ID = np.eye(len(Cardio_isole))
         Filtre = ID - Cardio_isole
 
+         #########################      Application du filtre sur tous les canaux EEG     #################
+         
         EEG_clean = np.dot(Filtre, EEG)
 
+        # Et cortrection des signaux EEG dans le dictionnaire des données
         for i in range(0, Neeg, 1):
             eeg_signals[i].samples = EEG_clean[i]
             eeg_signals[i].is_modified = True
